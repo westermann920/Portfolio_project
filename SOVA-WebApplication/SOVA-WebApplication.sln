@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29411.108
+VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOVA-WebApplication", "SOVA-WebApplication\SOVA-WebApplication.csproj", "{8D3F30BB-9A42-44A9-AA48-5B9DB56F3899}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOVA-WebApplication", "SOVA-WebApplication\SOVA-WebApplication.csproj", "{77A283DA-25DB-4FD6-AFC9-F1FFFF341E9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8D3F30BB-9A42-44A9-AA48-5B9DB56F3899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D3F30BB-9A42-44A9-AA48-5B9DB56F3899}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D3F30BB-9A42-44A9-AA48-5B9DB56F3899}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D3F30BB-9A42-44A9-AA48-5B9DB56F3899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77A283DA-25DB-4FD6-AFC9-F1FFFF341E9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77A283DA-25DB-4FD6-AFC9-F1FFFF341E9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77A283DA-25DB-4FD6-AFC9-F1FFFF341E9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77A283DA-25DB-4FD6-AFC9-F1FFFF341E9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C8D0DBCC-CC8D-4A95-A0E3-AFF0106D66C5}
+		SolutionGuid = {686EB540-4787-4779-A205-96172819849E}
 	EndGlobalSection
 EndGlobal
