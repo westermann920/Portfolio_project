@@ -11,7 +11,6 @@
         callback(data);
     };
 
-
     return {
         getNames,
         getWords

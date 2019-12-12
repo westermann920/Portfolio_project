@@ -16,7 +16,7 @@
       },
       "applicationUrl": "http://localhost:5001"
     },
-    "Livecode8": {
+    "SOVA_WepApp": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
