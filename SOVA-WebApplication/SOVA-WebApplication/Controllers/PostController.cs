@@ -10,38 +10,39 @@ using Microsoft.AspNetCore.Mvc;
 namespace SOVA_WebApplication.Controllers
 {
     [ApiController]
-    [Route("api/users")]
-    public class UsersController : Controller
+    [Route("api/post")]
+    public class PostController : Controller
     {
-        // GET: api/users
+        // GET: api/<controller>
         [HttpGet]
         public DataTable Get()
         {
             ConnectionDB b = new ConnectionDB();
-            DataTable dt = b.SendQuery("SELECT * FROM users");
+            DataTable dt = b.SendQuery("SELECT * FROM posts");
             return dt;
         }
 
-        // GET api/users/5
+        // GET api/<controller>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public DataTable Get(int id)
         {
-            return "value";
+            ConnectionDB b = new ConnectionDB();
+            return b.SendQuery($"SELECT * FROM posts WHERE id={id}");
         }
 
-        // POST api/users
+        // POST api/<controller>
         [HttpPost]
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT api/users/5
+        // PUT api/<controller>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/users/5
+        // DELETE api/<controller>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

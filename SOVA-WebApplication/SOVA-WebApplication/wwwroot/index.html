@@ -25,6 +25,14 @@
     </div>
 </nav>
 
+<form id="searchForm" method="post" action="api/search">
+    <div>
+        <label>Question</label>
+        <input name="searchTerm" type="text" />
+        <input type="submit" value="Submit" />
+    </div>
+</form>
+
 <div data-bind="component: {name: currentComponent}"></div>
 
 <pre data-bind="text: ko.toJSON($data, null, 2)"></pre>
