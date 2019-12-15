@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,28 +14,34 @@ namespace SOVA_WebApplication.Controllers
     [Route("api/post")]
     public class PostController : Controller
     {
-        // GET: api/<controller>
+        // GET: api/post
         [HttpGet]
-        public DataTable Get()
+        public String Get()
         {
             ConnectionDB b = new ConnectionDB();
             DataTable dt = b.SendQuery("SELECT * FROM posts");
-            return dt;
+            var JSONString = JsonConvert.SerializeObject(dt);
+            return JSONString;
         }
 
-        // GET api/<controller>/5
+        // GET api/post/5
         [HttpGet("{id}")]
-        public DataTable Get(int id)
+        public String Get(int id)
         {
             ConnectionDB b = new ConnectionDB();
-            return b.SendQuery($"SELECT * FROM posts WHERE id={id}");
+            DataTable dt = b.SendQuery($"SELECT * FROM posts WHERE id={id}");
+            var JSONString = JsonConvert.SerializeObject(dt);
+            return JSONString;
         }
 
-        // POST api/<controller>
+        // POST api/post
         [HttpPost]
         public string Post([FromBody]string value)
         {
-            return value;
+            ConnectionDB b = new ConnectionDB();
+            DataTable dt = b.SendQuery($"SELECT * FROM posts WHERE Contains(body, {value})");
+            var JSONString = JsonConvert.SerializeObject(dt);
+            return value.ToString();
         }
 
         // PUT api/<controller>/5
