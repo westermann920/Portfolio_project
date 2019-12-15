@@ -36,12 +36,12 @@ namespace SOVA_WebApplication.Controllers
 
         // POST api/post
         [HttpPost]
-        public string Post([FromBody]string value)
+        public string Post([FromForm]string searchTerm)
         {
             ConnectionDB b = new ConnectionDB();
-            DataTable dt = b.SendQuery($"SELECT * FROM posts WHERE Contains(body, {value})");
+            DataTable dt = b.SendQuery($"SELECT * FROM posts WHERE body LIKE '%{searchTerm}%'");
             var JSONString = JsonConvert.SerializeObject(dt);
-            return value.ToString();
+            return JSONString;
         }
 
         // PUT api/<controller>/5
