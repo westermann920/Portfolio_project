@@ -39,7 +39,7 @@ namespace SOVA_WebApplication.Controllers
         public string Post([FromForm]string searchTerm)
         {
             ConnectionDB b = new ConnectionDB();
-            DataTable dt = b.SendQuery($"SELECT * FROM posts WHERE body LIKE '%{searchTerm}%'");
+            DataTable dt = b.SendQuery($"SELECT creationdate, body, title, tags FROM posts WHERE body LIKE '%{searchTerm}%' ORDER BY score");
             var JSONString = JsonConvert.SerializeObject(dt);
             return JSONString;
         }
