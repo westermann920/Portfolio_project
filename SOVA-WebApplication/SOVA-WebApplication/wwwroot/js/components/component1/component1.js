@@ -7,7 +7,7 @@
         //postman.publish("selectperson", person);
     };
 
-    ds.getNames(persons);
+    ds.getposts(persons);
 
     return function (params) {
         return {
