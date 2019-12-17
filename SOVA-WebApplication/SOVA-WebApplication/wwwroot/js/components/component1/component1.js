@@ -1,5 +1,5 @@
 ﻿define(['knockout', 'dataService', 'store'], function (ko, ds, store) {
-    var persons = ko.observableArray([]);
+    var posts = ko.observableArray([]);
     
     var selectPerson = function (person) {
         store.dispatch(store.actions.selectPerson(person));
@@ -7,11 +7,11 @@
         //postman.publish("selectperson", person);
     };
 
-    ds.getposts(persons);
+    ds.getposts();
 
     return function (params) {
         return {
-            persons,
+            posts,
             selectPerson
         };
     };
