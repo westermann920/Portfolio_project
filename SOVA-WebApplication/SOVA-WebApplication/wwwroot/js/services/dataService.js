@@ -11,14 +11,7 @@
         callback(data);
     };
 
-    var getPosts = async function (callback) {
-        var response = await fetch("api/post");
-        var data = await response.json();
-        callback(data);
-    };
-
     return {
-        getPosts,
         getNames,
         getWords
     };
