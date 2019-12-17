@@ -34,6 +34,14 @@
             </ul>
         </nav>
 
+        <form action="/api/post" method="post">
+            <div>
+                <label>Question</label>
+                <input type="text" name="searchTerm" />
+                <input type="submit" value="Submit" />
+            </div>
+        </form>
+
         <div data-bind="component: {name: currentComponent}"></div>
     </div>
     <script data-main="js/main.js" src="lib/requirejs/require.js"></script>
