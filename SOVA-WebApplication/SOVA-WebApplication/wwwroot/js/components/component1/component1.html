@@ -1,8 +1,18 @@
-﻿<ul data-bind="foreach: persons">
-    <li data-bind="click:
-        $parent.selectPerson">
-        <span data-bind="text: name"></span>
-    </li>
-</ul>
+﻿<table class="table table-striped">
+    <thead>
+    <th scope="col">ID</th>
+    <th scope="col">Name</th>
+    <th scope="col">Age</thscope="col">
+    <th scope="col">Email</thscope="col">
+    </thead>
+    <tbody data-bind="foreach: persons">
+        <tr>
+            <td><span data-bind="text: id"></span></td>
+            <td><span data-bind="text: name"></span></td>
+            <td><span data-bind="text: age"></span></td>
+            <td><span data-bind="text: email"></span></td>
+        </tr>
+    </tbodydata-bind="foreach:>
+</table>
 
 <component2></component2>
