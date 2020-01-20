@@ -9,10 +9,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SOVA_WebApplication.Controllers
 {
+    [ApiController]
     [Route("api/users")]
     public class UsersController : Controller
     {
-        // GET: api/<controller>
+        // GET: api/users
         [HttpGet]
         public DataTable Get()
         {
@@ -21,26 +22,26 @@ namespace SOVA_WebApplication.Controllers
             return dt;
         }
 
-        // GET api/<controller>/5
+        // GET api/users/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<controller>
+        // POST api/users
         [HttpPost]
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT api/<controller>/5
+        // PUT api/users/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/<controller>/5
+        // DELETE api/users/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
