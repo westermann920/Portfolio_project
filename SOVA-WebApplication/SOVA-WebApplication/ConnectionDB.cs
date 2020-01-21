@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Npgsql;
+using SOVA_WebApplication.Models;
 
 namespace SOVA_WebApplication
 {

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Npgsql.Spatial;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,10 +18,10 @@ namespace SOVA_WebApplication.Controllers
     {
         // GET: api/post
         [HttpGet]
-        public String Get()
+        public string Get()
         {
             ConnectionDB b = new ConnectionDB();
-            DataTable dt = b.SendQuery("SELECT * FROM posts");
+            DataTable dt = b.SendQuery("SELECT id, title, body FROM posts");
             var JSONString = JsonConvert.SerializeObject(dt);
             return JSONString;
         }
@@ -34,12 +36,12 @@ namespace SOVA_WebApplication.Controllers
             return JSONString;
         }
 
-        // POST api/post
-        [HttpPost]
-        public string Post([FromForm]string searchTerm)
+        // GET api/post
+        [HttpGet("{searchTerm}")]
+        public string Get([FromForm]string searchTerm)
         {
             ConnectionDB b = new ConnectionDB();
-            DataTable dt = b.SendQuery($"SELECT creationdate, body, title, tags FROM posts WHERE body LIKE '%{searchTerm}%' ORDER BY score DESC");
+            DataTable dt = b.SendQuery($"SELECT title, body, creationdate, tags FROM posts WHERE body LIKE '%{searchTerm}%' ORDER BY score DESC");
             var JSONString = JsonConvert.SerializeObject(dt);
             return JSONString;
         }
@@ -48,12 +50,16 @@ namespace SOVA_WebApplication.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
+            ConnectionDB b = new ConnectionDB();
+            b.SendQuery("MAX(ID) FROM posts");
         }
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete([FromBody] int id)
         {
+            ConnectionDB b = new ConnectionDB(); 
+            b.SendQuery($"DELETE FROM posts WHERE id = '%{id}%'");
         }
     }
 }
