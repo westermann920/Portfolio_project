@@ -11,40 +11,19 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">
                 <img src="https://i.imgur.com/XtTlSpw.png" width="30" height="30" alt="" />
-                SOVA
+                Bootleg SOVA
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto" data-bind="foreach: menuElements">
-                    <li class="nav-item" data-bind="css: $parent.isSelected($data)">
-                        <a class="nav-link" data-bind="attr: { href: component }, click: $parent.changeContent, text: name"></a>
-                    </li>
-                </ul>
-            </div>
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <form class="form-inline my-2 my-lg-0" action="/api/post" method="post">
-                        <input placeholder="Enter search term" class="form-control mr-sm-2" aria-label="Search" type="text" name="searchTerm" />
-                        <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Submit" />
-                    </form>
-                </li>
-            </ul>
         </nav>
-
-        <form action="/api/post" method="get">
-            <div>
-                <label>Question</label>
-                <input type="text" name="searchTerm" />
-                <input type="submit" value="Submit" />
-            </div>
-        </form>
-
-        <div data-bind="component: {name: currentComponent}"></div>
     </div>
-<pre data-bind="text: ko.toJSON($data, null, 2)"></pre>
+
+    <form data-bind="submit: getPosts">
+        Question:
+        <input data-bind='value: termToFind, valueUpdate: "afterkeydown"' />
+        <button type="submit" data-bind="enable: getPosts().length > 0">Search</button>
+        <p>Found posts:</p>
+        <select multiple="multiple" width="50" data-bind="options: posts"> </select>
+    </form>
+
     <script data-main="js/main.js" src="lib/requirejs/require.js"></script>
 </body>
 </html>

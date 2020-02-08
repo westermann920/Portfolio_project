@@ -1,45 +1,25 @@
-﻿
-require.config({
-    baseUrl: "js",
-    paths: {
-        jquery: "../lib/jquery/dist/jquery",
-        knockout: "../lib/knockout/build/output/knockout-latest.debug",
-        text: "../lib/requirejs-text/text",
-        jqcloud: "../lib/jqcloud2/dist/jqcloud",
-        dataService: "services/dataService",
-        postman: "services/postman",
-        store: "services/store"
-    },
-    shim: {
-        jqcloud: ["jquery"]
-    }
-});
+﻿var SimpleListModel = function (items) {
+    this.items = ko.observableArray(items);
+    this.itemToAdd = ko.observable("");
+    this.addItem = function () {
+        if (this.itemToAdd() != "") {
+            this.items.push(this.itemToAdd()); // Adds the item. Writing to the "items" observableArray causes any associated UI to update.
+            this.itemToAdd(""); // Clears the text box, because it's bound to the "itemToAdd" observable
+        }
+    }.bind(this);  // Ensure that "this" is always this view model
+};
 
-require(["knockout"], function(ko) {
-    ko.components.register('cloud', {
-        viewModel: { require: "components/wordcloud/cloud" },
-        template: { require: "text!components/wordcloud/cloud.html" }
-    });
-    ko.components.register('parent', {
-        viewModel: { require: "components/parent/parent" },
-        template: { require: "text!components/parent/parent.html" }
-    });
-    ko.components.register('child', {
-        viewModel: { require: "components/child/child" },
-        template: { require: "text!components/child/child.html" }
-    });
-    ko.components.register('component1', {
-        viewModel: { require: "components/component1/component1" },
-        template: { require: "text!components/component1/component1.html" }
-    });
-    ko.components.register('component2', {
-        viewModel: { require: "components/component2/component2" },
-        template: { require: "text!components/component2/component2.html" }
-    });
-});
+var SearchPosts = function (posts) {
+    this.posts = ko.observableArray(posts);
+    this.termToFind = ko.observable("");
 
-
-require(["knockout", "store", "navbarApp"], function (ko, store, app) {
-    store.subscribe(() => console.log(store.getState()));
-    ko.applyBindings(app);
-});
+    this.getPosts = function () {
+        if (this.termToFind() != "") {
+            $.getJSON("/api/post", function (data) {
+                this.posts.push(data); //adds the posts to the observableArray
+                this.termToFind("") //clears the search box
+            })
+        }
+    }.bind(this);  // Ensure that "this" is always this view model
+};
+ko.applyBindings(new SearchPosts([]));
