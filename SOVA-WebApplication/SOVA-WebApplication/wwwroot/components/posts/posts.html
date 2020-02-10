@@ -1,0 +1,5 @@
+﻿<form data-bind="submit: getPosts">
+    Question:
+    <input data-bind='value: termToFind, valueUpdate: "afterkeydown"' />
+    <button type="submit" data-bind="enable: getPosts().length > 0">Search</button>
+</form>

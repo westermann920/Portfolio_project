@@ -16,14 +16,6 @@
         </nav>
     </div>
 
-    <form data-bind="submit: getPosts">
-        Question:
-        <input data-bind='value: termToFind, valueUpdate: "afterkeydown"' />
-        <button type="submit" data-bind="enable: getPosts().length > 0">Search</button>
-        <p>Found posts:</p>
-        <select multiple="multiple" width="50" data-bind="options: posts"> </select>
-    </form>
-
     <script data-main="js/main.js" src="lib/requirejs/require.js"></script>
 </body>
 </html>

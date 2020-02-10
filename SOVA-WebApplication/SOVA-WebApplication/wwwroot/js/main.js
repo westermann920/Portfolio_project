@@ -1,14 +1,23 @@
-﻿var SearchPosts = function (posts) {
-    this.posts = ko.observableArray(posts);
-    this.termToFind = ko.observable("");
+﻿require.config({
+    baseUrl: "js",
+    paths: {
+        jquery: "../lib/jquery/dist/jquery",
+        knockout: "../lib/knockout/build/output/knockout-latest.debug",
+        text: "../lib/requirejs-text/text",
+        jqcloud: "../lib/jqcloud2/dist/jqcloud",
+    },
+    shim: {
+        jqcloud: ["jquery"]
+    }
+});
 
-    this.getPosts = function () {
-        if (this.termToFind() != "") {
-            $.getJSON("http://localhost:5000/api/post", function (data) {
-                this.posts.push(data); //adds the posts to the observableArray
-                this.termToFind("") //clears the search box
-            })
-        }
-    }.bind(this);  // Ensure that "this" is always this view model
-};
-ko.applyBindings(new SearchPosts([]));
+require(["knockout"], function (ko) {
+    ko.components.register('posts', {
+        viewModel: { require: "components/posts/posts" },
+        template: { require: "text!components/posts/posts.html" }
+    });
+    ko.components.register('cloud', {
+        viewModel: { require: "components/wordcloud/cloud" },
+        template: { require: "text!components/wordcloud/cloud.html" }
+    });
+});
