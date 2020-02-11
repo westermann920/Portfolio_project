@@ -4,10 +4,7 @@
         jquery: "../lib/jquery/dist/jquery",
         knockout: "../lib/knockout/build/output/knockout-latest.debug",
         text: "../lib/requirejs-text/text",
-        jqcloud: "../lib/jqcloud2/dist/jqcloud",
-    },
-    shim: {
-        jqcloud: ["jquery"]
+        navbar: "../js/navbar"
     }
 });
 
@@ -20,4 +17,8 @@ require(["knockout"], function (ko) {
         viewModel: { require: "components/wordcloud/cloud" },
         template: { require: "text!components/wordcloud/cloud.html" }
     });
+});
+
+define(["knockout", "navbar"], function (ko, navbar) {
+    ko.applyBindings(navbar);
 });

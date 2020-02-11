@@ -13,8 +13,17 @@
                 <img src="https://i.imgur.com/XtTlSpw.png" width="30" height="30" alt="" />
                 Bootleg SOVA
             </a>
+            <ul class="navbar-nav mr-auto" data-bind="foreach: menuComps">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bind="click: $parent.changeComp">
+                        <span data-bind="text: name"></span>
+                    </a>
+                </li>
+            </ul>
         </nav>
     </div>
+
+    <div data-bind="component: {name: Component}"></div>
 
     <script data-main="js/main.js" src="lib/requirejs/require.js"></script>
 </body>
