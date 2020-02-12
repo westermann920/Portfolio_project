@@ -21,6 +21,10 @@
         ];
 
         $('#bootLegWordCloud').jQCloud(cloudWords);
+
+        self.updateCloud = async function () {
+            $('#bootLegWordCloud').jQCloud('update', cloudWords);
+        }
     };
     return cloudViewModel;
 });
