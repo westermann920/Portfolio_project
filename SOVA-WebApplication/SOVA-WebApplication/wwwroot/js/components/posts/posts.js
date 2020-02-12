@@ -13,25 +13,25 @@
         self.posts = ko.observableArray();
         self.termToFind = ko.observable("");
 
-        self.checkTerm = function() {
+        self.checkTerm = function () {
             if (self.termToFind() !== "") {
                 return true;
             } else {
                 return false;
             }
-
         };
 
-        self.getPosts = function() {
+        self.getPosts = function () {
             if (self.termToFind() !== "") {
-                var urlString = "http://localhost:5001/api/post?searchTerm=" + self.termToFind;
-                $.getJSON(urlString, function(data) {
-                        self.termToFind(""); //clears the search box
-                        ko.utils.arrayForEach(data, function (table) {
-                            self.posts.push(new PostModel(table)); //adds the post to the observableArray
-                        });
-                        //console.log(self.posts); //used for debugging
-                    });
+                var urlString = `http://localhost:5001/api/post?searchTerm=${self.termToFind}`;
+                $.getJSON(urlString, function (data) {
+                    self.termToFind(""); //clears the search box
+                    // takes 5 posts and show them
+                    for (var i = 0; i < 5; i++) {
+                        self.posts.push(new PostModel(data[i]));
+                    }
+                    //console.log(self.posts); //used for debugging
+                });
             }
         };
     };
