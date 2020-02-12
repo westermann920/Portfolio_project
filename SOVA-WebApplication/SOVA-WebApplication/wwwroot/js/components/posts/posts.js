@@ -31,11 +31,10 @@
                         var array = [];
                         ko.utils.arrayForEach(data,
                             function(table) {
-                                console.log(table);
                                 array.push(table); //adds the post to the observableArray
                             });
                         self.post = array;
-                        //console.log(this.post); //used for debugging
+                        console.log(self.post); //used for debugging
                     });
             }
         };

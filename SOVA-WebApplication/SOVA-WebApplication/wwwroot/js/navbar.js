@@ -12,7 +12,7 @@
     ];
 
     var Menu = menuComps[0];
-    var Component = ko.observable(Menu.component);
+    var menuComponent = ko.observable(Menu.component);
 
     var goToPost = function() {
         Menu = menuComps[0];
@@ -22,7 +22,7 @@
     };
 
     return {
-        Component,
+        menuComponent,
         menuComps,
         goToPost,
         goToCloud
