@@ -14,17 +14,13 @@
     var Menu = menuComps[0];
     var menuComponent = ko.observable(Menu.component);
 
-    var goToPost = function() {
-        Menu = menuComps[0];
-    };
-    var goToCloud = function() {
-        Menu = menuComps[1];
-    };
+    var changeComponent = function (comp) {
+        menuComponent(comp.component);
+    }
 
     return {
         menuComponent,
         menuComps,
-        goToPost,
-        goToCloud
+        changeComponent
     };
 });
