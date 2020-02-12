@@ -20,14 +20,17 @@
         }
 
         this.getPosts = function () {
+            this.post = ko.observableArray([]);
             if (this.termToFind() !== "") {
                 $.getJSON("http://localhost:5001/api/post/?method=get", function (data) {
                     this.termToFind = ""; //clears the search box
-                    this.post = [];
-                    ko.utils.arrayForEach(data, function (model) {
-                        this.post.push(new PostModel(model));//adds the posts to the observableArray
+                    var array = [];
+                    ko.utils.arrayForEach(data, function (table) {
+                        console.log(table)
+                        array.push(table);//adds the post to the observableArray
                     });
-                    console.log(this.post); //used for debugging
+                    this.post = array;
+                    //console.log(this.post); //used for debugging
                 })
             }
         }

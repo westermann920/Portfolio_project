@@ -4,4 +4,8 @@
     <button type="submit" data-bind="enable: checkTerm() != false">Search</button>
 </form>
 
-<div data-bind="template: {name: 'postModel', foreach: post}"></div>
+<ul data-bind="foreach: post">
+    <li data-bind="text: id"></li>
+    <li data-bind="text: title"></li>
+    <li data-bind="text: body"></li>
+</ul>
