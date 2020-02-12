@@ -4,10 +4,10 @@
     <button type="submit" data-bind="enable: checkTerm() != false">Search</button>
 </form>
 
-<div data-bind="foreach: post">
+<div data-bind="foreach: posts">
     <ul>
-        <li data-bind="text: $parent.id"></li>
-        <li data-bind="text: $parent.title"></li>
-        <li data-bind="text: $parent.body"></li>
+        <li data-bind="text: id"></li>
+        <li data-bind="text: title"></li>
+        <li data-bind="text: body"></li>
     </ul>
 </div>

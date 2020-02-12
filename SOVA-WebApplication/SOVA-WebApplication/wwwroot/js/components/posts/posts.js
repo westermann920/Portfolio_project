@@ -1,20 +1,20 @@
 ﻿define(['knockout', "jquery"], function (ko, $) {
     // Model
-    function postModel(data) {
+    function PostModel(data) {
         var self = this;
-        self.id = ko.observable(data.id);
-        self.title = ko.observable(data.title);
-        self.body = ko.observable(data.body);
+        self.id = data.id;
+        self.title = data.title;
+        self.body = data.body;
     };
 
     // View Model
     function postViewModel() {
         var self = this;
-        self.post = ko.observableArray([]);
+        self.posts = ko.observableArray();
         self.termToFind = ko.observable("");
 
         self.checkTerm = function() {
-            if (self.termToFind() != "") {
+            if (self.termToFind() !== "") {
                 return true;
             } else {
                 return false;
@@ -23,18 +23,14 @@
         };
 
         self.getPosts = function() {
-            self.post = ko.observableArray([]);
             if (self.termToFind() !== "") {
-                $.getJSON("http://localhost:5001/api/post",
-                    function(data) {
+                var urlString = "http://localhost:5001/api/post?searchTerm=" + self.termToFind;
+                $.getJSON(urlString, function(data) {
                         self.termToFind(""); //clears the search box
-                        var array = [];
-                        ko.utils.arrayForEach(data,
-                            function(table) {
-                                array.push(table); //adds the post to the observableArray
-                            });
-                        self.post = array;
-                        console.log(self.post); //used for debugging
+                        ko.utils.arrayForEach(data, function (table) {
+                            self.posts.push(new PostModel(table)); //adds the post to the observableArray
+                        });
+                        //console.log(self.posts); //used for debugging
                     });
             }
         };
