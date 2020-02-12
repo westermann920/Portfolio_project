@@ -21,9 +21,21 @@
             }
         };
 
+        self.getPosts = async function () {
+            if (self.termToFind() !== "") {
+                var response = await fetch("api/post?searchTerm=" + self.termToFind);
+                     self.termToFind(""); //clears the search box
+            }
+            var data = await response.json();
+            for (var i = 0; i < 5; i++) {
+                self.posts.push(new PostModel(data[i]));
+            }
+        };
+
+        /*
         self.getPosts = function () {
             if (self.termToFind() !== "") {
-                var urlString = `http://localhost:5001/api/post?searchTerm=${self.termToFind}`;
+                var urlString = "http://localhost:5001/api/post?searchTerm=" + self.termToFind;
                 $.getJSON(urlString, function (data) {
                     self.termToFind(""); //clears the search box
                     // takes 5 posts and show them
@@ -33,7 +45,7 @@
                     //console.log(self.posts); //used for debugging
                 });
             }
-        };
+        };*/
     };
     return postViewModel;
 });

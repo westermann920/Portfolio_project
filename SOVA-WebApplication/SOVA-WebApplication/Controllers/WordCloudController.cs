@@ -19,7 +19,16 @@ namespace SOVA_WebApplication.Controllers
         public string Get()
         {
             ConnectionDB b = new ConnectionDB();
-            DataTable dt = b.SendQuery("SELECT word FROM words");
+            DataTable dt = b.SendQuery("SELECT DISTINCT word FROM words");
+            var JSONString = JsonConvert.SerializeObject(dt);
+            return JSONString;
+        }
+
+        [HttpGet("{countWord}")]
+        public string Get([FromForm]string countWord)
+        {
+            ConnectionDB b = new ConnectionDB();
+            DataTable dt = b.SendQuery($"SELECT COUNT(word) AS count FROM words WHERE word={countWord}");
             var JSONString = JsonConvert.SerializeObject(dt);
             return JSONString;
         }
