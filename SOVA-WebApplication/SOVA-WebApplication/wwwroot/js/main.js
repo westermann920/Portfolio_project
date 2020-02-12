@@ -3,8 +3,7 @@
     paths: {
         jquery: "../lib/jquery/dist/jquery",
         knockout: "../lib/knockout/build/output/knockout-latest.debug",
-        text: "../lib/requirejs-text/text",
-        navbar: "../js/navbar"
+        text: "../lib/requirejs-text/text"
     }
 });
 

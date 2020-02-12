@@ -1,39 +1,44 @@
 ﻿define(['knockout', "jquery"], function (ko, $) {
     // Model
-    function PostModel(data) {
-        this.id = ko.observable(data.id);
-        this.title = ko.observable(data.title);
-        this.body = ko.observable(data.body);
-    }
+    function postModel(data) {
+        var self = this;
+        self.id = ko.observable(data.id);
+        self.title = ko.observable(data.title);
+        self.body = ko.observable(data.body);
+    };
 
     // View Model
-    function PostViewModel() {
-        this.post = ko.observableArray([]);
-        this.termToFind = ko.observable("");
+    function postViewModel() {
+        var self = this;
+        self.post = ko.observableArray([]);
+        self.termToFind = ko.observable("");
 
-        this.checkTerm = function () {
-            if (this.termToFind() != "") { return true }
-            else {
-                return false
+        self.checkTerm = function() {
+            if (self.termToFind() != "") {
+                return true;
+            } else {
+                return false;
             }
 
-        }
+        };
 
-        this.getPosts = function () {
-            this.post = ko.observableArray([]);
-            if (this.termToFind() !== "") {
-                $.getJSON("http://localhost:5001/api/post/?method=get", function (data) {
-                    this.termToFind = ""; //clears the search box
-                    var array = [];
-                    ko.utils.arrayForEach(data, function (table) {
-                        console.log(table)
-                        array.push(table);//adds the post to the observableArray
+        self.getPosts = function() {
+            self.post = ko.observableArray([]);
+            if (self.termToFind() !== "") {
+                $.getJSON("http://localhost:5001/api/post",
+                    function(data) {
+                        self.termToFind(""); //clears the search box
+                        var array = [];
+                        ko.utils.arrayForEach(data,
+                            function(table) {
+                                console.log(table);
+                                array.push(table); //adds the post to the observableArray
+                            });
+                        self.post = array;
+                        //console.log(this.post); //used for debugging
                     });
-                    this.post = array;
-                    //console.log(this.post); //used for debugging
-                })
             }
-        }
-    }
-    return PostViewModel;
+        };
+    };
+    return postViewModel;
 });

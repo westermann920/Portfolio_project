@@ -1,11 +1,13 @@
 ﻿define(['knockout'], function (ko) {
     function Word(name, rating) {
-        this.name = name;
-        this.userRating = ko.observable(rating || null);
+        var self = this
+        self.name = name;
+        self.userRating = ko.observable(rating || null);
     }
 
-    function MyViewModel() {
-        this.words = [];
-    }
-    return MyViewModel;
+    function cloudViewModel() {
+        var self = this;
+        self.words = [];
+    };
+    return cloudViewModel;
 });
