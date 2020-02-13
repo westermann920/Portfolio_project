@@ -1,2 +1,11 @@
-﻿﻿<div id="bootLegWordCloud"></div>
-<button data-bind="click: updateCloud">update WordCloud</button>
+﻿<div>
+    <div>
+        Word: <input data-bind="value: word" />
+    </div>
+    <div>
+        <button data-bind="click: addWord, enable: checkInput() != false">Add</button>
+        <button data-bind="click: resetCloud">reset WordCloud</button>
+        <button data-bind="click: updateCloud">update WordCloud</button>
+    </div>
+</div>
+<div id="bootLegWordCloud" style="border: 2px solid black"></div>

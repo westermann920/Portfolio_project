@@ -10,7 +10,6 @@ using Newtonsoft.Json;
 
 namespace SOVA_WebApplication.Controllers
 {
-    [ApiController]
     [Route("api/word")]
     public class WordCloudController : Controller
     {
@@ -24,15 +23,6 @@ namespace SOVA_WebApplication.Controllers
             return JSONString;
         }
 
-        [HttpGet("{countWord}")]
-        public string Get([FromForm]string countWord)
-        {
-            ConnectionDB b = new ConnectionDB();
-            DataTable dt = b.SendQuery($"SELECT COUNT(word) AS count FROM words WHERE word={countWord}");
-            var JSONString = JsonConvert.SerializeObject(dt);
-            return JSONString;
-        }
-
         // GET api/word/5
         [HttpGet("{id}")]
         public string Get(int id)
@@ -40,10 +30,14 @@ namespace SOVA_WebApplication.Controllers
             return "value";
         }
 
-        // POST api/word
-        [HttpPost]
-        public void Post([FromBody]string value)
+        // GET api/word/count/word
+        [HttpGet("count/{countWord}")]
+        public string Get(string countWord)
         {
+            ConnectionDB b = new ConnectionDB();
+            DataTable dt = b.SendQuery($"SELECT count(word) AS count FROM words WHERE word like'{countWord}'");
+            var JSONString = JsonConvert.SerializeObject(dt);
+            return JSONString;
         }
 
         // PUT api/word/5

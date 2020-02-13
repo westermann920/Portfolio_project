@@ -23,12 +23,14 @@
 
         self.getPosts = async function () {
             if (self.termToFind() !== "") {
-                var response = await fetch("api/post?searchTerm=" + self.termToFind);
-                     self.termToFind(""); //clears the search box
-            }
-            var data = await response.json();
-            for (var i = 0; i < 5; i++) {
-                self.posts.push(new PostModel(data[i]));
+                var response = await fetch("api/post/find/" + self.termToFind());
+                var data = await response.json();
+                self.posts.push(new PostModel(data[0]));
+                /*
+                for (var i = 0; i < 5; i++) {
+                    self.posts.push(new PostModel(data[i]));
+                }*/
+                self.termToFind(""); //clears the search box
             }
         };
 

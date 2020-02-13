@@ -12,7 +12,6 @@ using Npgsql.Spatial;
 
 namespace SOVA_WebApplication.Controllers
 {
-    [ApiController]
     [Route("api/post")]
     public class PostController : Controller
     {
@@ -36,17 +35,17 @@ namespace SOVA_WebApplication.Controllers
             return JSONString;
         }
 
-        // GET api/post
-        [HttpGet("{searchTerm}")]
-        public string Get([FromForm]string searchTerm)
+        // GET api/post/find/this
+        [HttpGet("find/{searchTerm}")]
+        public string Get(string searchTerm)
         {
             ConnectionDB b = new ConnectionDB();
-            DataTable dt = b.SendQuery($"SELECT DISTINCT id, title, body, creationdate, tags FROM posts WHERE body LIKE '%{searchTerm}%' ORDER BY score DESC");
+            DataTable dt = b.SendQuery($"SELECT DISTINCT id, title, body, creationdate, tags, score FROM posts WHERE body LIKE '%{searchTerm}%' ORDER BY score DESC");
             var JSONString = JsonConvert.SerializeObject(dt);
             return JSONString;
         }
 
-        // PUT api/<controller>/5
+        // PUT api/post/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
