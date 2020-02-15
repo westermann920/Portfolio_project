@@ -1,6 +1,6 @@
 ﻿<div>
     <div>
-        Word: <input data-bind="value: word" />
+        Word: <input data-bind="value: word, valueUpdate: 'afterkeydown'" />
     </div>
     <div>
         <button data-bind="click: addWord, enable: checkInput() != false">Add</button>

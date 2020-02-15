@@ -1,6 +1,6 @@
 ﻿<form data-bind="submit: getPosts">
     Question:
-    <input data-bind='value: termToFind, valueUpdate: "afterkeydown"' />
+    <input data-bind="value: termToFind, valueUpdate: 'afterkeydown'" />
     <button type="submit" data-bind="enable: checkTerm() != false">Search</button>
 </form>
 
