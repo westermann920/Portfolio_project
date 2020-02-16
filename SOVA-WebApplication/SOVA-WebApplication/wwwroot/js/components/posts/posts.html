@@ -4,10 +4,24 @@
     <button type="submit" data-bind="enable: checkTerm() != false">Search</button>
 </form>
 
-<div data-bind="foreach: posts">
-    <ul>
-        <li data-bind="text: id"></li>
-        <li data-bind="text: title"></li>
-        <li data-bind="text: body"></li>
-    </ul>
+<div>
+    <select data-bind="value: setSize">
+        <option value="1">1</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="all">All</option>
+    </select>
+    <div data-bind="foreach: posts">
+        <ul>
+            <li data-bind="text: id"></li>
+            <li data-bind="text: title"></li>
+            <li data-bind="text: body"></li>
+        </ul>
+    </div>
+    <div>
+        <nav>
+            <a href="#" data-bind="click: previousSet">Previous</a>
+            <a href="#" data-bind="click: nextSet">Next</a>
+        </nav>
+    </div>
 </div>
