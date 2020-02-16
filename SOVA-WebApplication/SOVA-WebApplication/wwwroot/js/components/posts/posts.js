@@ -10,7 +10,7 @@
     // View Model
     function postViewModel() {
         var self = this;
-        self.posts = ko.observableArray(); // Posts currently shown
+        self.posts = ko.observableArray([]); // Posts currently shown
         self.allPosts = ko.observableArray(); // All posts form search
         self.termToFind = ko.observable(""); // Search input value
         self.setSize = ko.observable(5); // How many posts is shown at ones
@@ -24,6 +24,15 @@
                 return false;
             }
         };
+
+        // Checks if there are any posts
+        self.checkPost = function () {
+            if (self.posts() !== []) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 
         // Gets data from api
         self.getPosts = async function () {

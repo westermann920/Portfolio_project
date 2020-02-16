@@ -4,7 +4,7 @@
     <button type="submit" data-bind="enable: checkTerm() != false">Search</button>
 </form>
 
-<div>
+<div data-bind="hidden: checkPost">
     <select data-bind="value: setSize">
         <option value="1">1</option>
         <option value="5">5</option>
