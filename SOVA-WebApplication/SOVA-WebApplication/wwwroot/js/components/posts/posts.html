@@ -1,7 +1,7 @@
-﻿<form data-bind="submit: getPosts">
+﻿<form class="form-group" data-bind="submit: getPosts">
     Question:
-    <input data-bind="value: termToFind, valueUpdate: 'afterkeydown'" />
-    <button type="submit" data-bind="enable: checkTerm() != false">Search</button>
+    <input class="form-control" data-bind="value: termToFind, valueUpdate: 'afterkeydown'" />
+    <button class="btn btn-dark" type="submit" data-bind="enable: checkTerm() != false">Search</button>
 </form>
 
 <div data-bind="hidden: checkPost">
