@@ -14,11 +14,13 @@
         </select>
     </div>
     <div data-bind="foreach: posts">
-        <ul>
-            <li data-bind="text: id"></li>
-            <li data-bind="text: title"></li>
-            <li data-bind="text: body"></li>
-        </ul>
+        <table class="table">
+            <tr>
+                <th data-bind="text: id"></th>
+                <td data-bind="text: title"></td>
+                <td data-bind="text: body"></td>
+            </tr>
+        </table>
     </div>
     <div>
         <nav>
