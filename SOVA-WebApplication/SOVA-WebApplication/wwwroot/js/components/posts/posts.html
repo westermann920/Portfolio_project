@@ -5,7 +5,7 @@
 </form>
 
 <div>
-    <div data-bind="hidden: checkPost() != true">
+    <div data-bind="visible: posts().length > 0">
         <select data-bind="value: setSize">
             <option value="1">1</option>
             <option value="5">5</option>
@@ -23,9 +23,10 @@
         </table>
     </div>
     <div>
-        <nav>
-            <a href="#" data-bind="click: previousSet">Previous</a>
-            <a href="#" data-bind="click: nextSet">Next</a>
+        <nav data-bind="visible: posts().length > 0" class="align-baseline">
+            <a href="#" data-bind="click: previousSet, visible: currentSet() > 0">Previous</a>
+            <p>Set: <span data-bind="text: currentSet()+1"></span> of <span data-bind="text: numberOfPostSets()+1"></span></p>
+            <a href="#" data-bind="click: nextSet, visible: currentSet() < numberOfPostSets()">Next</a>
         </nav>
     </div>
 </div>
