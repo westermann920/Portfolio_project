@@ -35,12 +35,32 @@ namespace SOVA_WebApplication.Controllers
             return JSONString;
         }
 
-        // GET api/post/find/this
-        [HttpGet("find/{searchTerm}")]
+        // GET api/post/find/inBody/something
+        [HttpGet("find/inBody/{searchTerm}")]
         public string Get(string searchTerm)
         {
             ConnectionDB b = new ConnectionDB();
             DataTable dt = b.SendQuery($"SELECT DISTINCT id, title, body, creationdate, tags, score FROM posts WHERE body LIKE '%{searchTerm}%' ORDER BY score DESC");
+            var JSONString = JsonConvert.SerializeObject(dt);
+            return JSONString;
+        }
+
+        // GET api/post/find/inTitle/something
+        [HttpGet("find/inTitle/{searchTerm}")]
+        public string GetInTitle(string searchTerm)
+        {
+            ConnectionDB b = new ConnectionDB();
+            DataTable dt = b.SendQuery($"SELECT DISTINCT id, title, body, creationdate, tags, score FROM posts WHERE title LIKE '%{searchTerm}%' ORDER BY score DESC");
+            var JSONString = JsonConvert.SerializeObject(dt);
+            return JSONString;
+        }
+
+        // GET api/post/find/inTags/something
+        [HttpGet("find/inTags/{searchTerm}")]
+        public string GetInTags(string searchTerm)
+        {
+            ConnectionDB b = new ConnectionDB();
+            DataTable dt = b.SendQuery($"SELECT DISTINCT id, title, body, creationdate, tags, score FROM posts WHERE tags LIKE '%{searchTerm}%' ORDER BY score DESC");
             var JSONString = JsonConvert.SerializeObject(dt);
             return JSONString;
         }

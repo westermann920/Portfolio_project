@@ -1,6 +1,11 @@
 ﻿<form class="form-group" data-bind="submit: getPosts">
     Question:
     <input class="form-control" data-bind="value: termToFind, valueUpdate: 'afterkeydown'" />
+    <select data-bind="value: currentSearchType">
+        <option value="inBody">inBody</option>
+        <option value="inTitle">inTitle</option>
+        <option value="inTags">inTags</option>
+    </select>
     <button class="btn btn-dark" type="submit" data-bind="enable: checkTerm() != false">Search</button>
 </form>
 

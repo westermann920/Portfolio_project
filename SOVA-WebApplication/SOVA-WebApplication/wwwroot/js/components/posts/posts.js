@@ -22,6 +22,7 @@
         self.termToFind = ko.observable(""); // Search input value
         self.setSize = ko.observable(5); // How many posts is shown at ones
         self.currentSet = ko.observable(0); // The current post set
+        self.currentSearchType = ko.observable("inBody");
 
         // Check if search input field is used or not
         self.checkTerm = function () {
@@ -44,7 +45,7 @@
         // Gets data from api
         self.getPosts = async function () {
             if (self.termToFind() !== "") {
-                var response = await fetch("api/post/find/" + self.termToFind());
+                var response = await fetch("api/post/find/" + self.currentSearchType() + "/" + self.termToFind());
                 var data = await response.json();
                 for (var i = 0; i < data.length; i++) {
                     self.allPosts.push(new PostModel(data[i]));
@@ -59,7 +60,7 @@
                 self.posts(self.allPosts.slice(0));
             } else {
                 var size = parseInt(self.setSize(), 10);
-                var first = size * self.currentSet(); 
+                var first = size * self.currentSet();
                 var last = first + size;
                 self.posts(self.allPosts.slice(first, last));
             }
