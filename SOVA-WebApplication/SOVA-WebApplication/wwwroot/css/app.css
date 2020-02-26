@@ -1,1 +1,4 @@
-﻿
+﻿.postTable tr td{
+    vertical-align: auto;
+    margin-left: 10px;
+}
