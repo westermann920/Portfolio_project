@@ -11,16 +11,16 @@
         var self = this;
         self.word = ko.observable("");
 
-        var words = [new WordModel("Lorem", 13),
-            new WordModel("Ipsum", 10),
-            new WordModel("Dolor", 9),
-            new WordModel("Sit", 8),
-            new WordModel("Amet", 6),
-            new WordModel("Consectetur", 5),
-            new WordModel("Adipiscing", 5)
-        ];
+        self.words = ko.observablearry([new WordModel("Lorem", 13),
+        new WordModel("Ipsum", 10),
+        new WordModel("Dolor", 9),
+        new WordModel("Sit", 8),
+        new WordModel("Amet", 6),
+        new WordModel("Consectetur", 5),
+        new WordModel("Adipiscing", 5)
+        ]);
 
-        $("#bootLegWordCloud").jQCloud(words, { width: 200, height: 200 });
+        $("#bootLegWordCloud").jQCloud(self.words, { width: 200, height: 200 });
 
         self.checkInput = function() {
             if (self.word() !== "") {
@@ -34,25 +34,25 @@
         {
             var response = await fetch(`api/word/count/${self.word()}`);
             var wordCountData = await response.json();
-            words.push(new WordModel(self.word(), wordCountData[0].count));
+            self.words.push(new WordModel(self.word(), wordCountData[0].count));
             self.word("");// reset word
-            $("#bootLegWordCloud").jQCloud("update", words);
+            $("#bootLegWordCloud").jQCloud("update", self.words);
         }
 
         self.resetCloud = async function () {
-            words = [];//clears word array
-            $("#bootLegWordCloud").jQCloud("update", words);
+            self.words = [];//clears word array
+            $("#bootLegWordCloud").jQCloud("update", self.words);
         };
 
         self.updateCloud = async function () {
-            words = [];//clears word array
+            self.words = [];//clears word array
             var wordList = ["sql", "php", "c#", "c++", "java", "javaScript"];
             for (var i = 0; i < wordList.length; i++) {
                 var response = await fetch(`api/word/count/${wordList[i]}`);
                 var wordCountData = await response.json();
-                words.push(new WordModel(wordList[i], wordCountData[0].count));
+                self.words.push(new WordModel(wordList[i], wordCountData[0].count));
             }
-            $("#bootLegWordCloud").jQCloud("update", words);
+            $("#bootLegWordCloud").jQCloud("update", self.words);
             /*
             var cloudWords = [];
             var response = await fetch("api/word");
