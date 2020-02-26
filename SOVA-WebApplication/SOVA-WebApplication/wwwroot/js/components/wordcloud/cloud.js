@@ -11,7 +11,7 @@
         var self = this;
         self.word = ko.observable("");
 
-        self.words = ko.observablearry([new WordModel("Lorem", 13),
+        self.words = ko.observableArray([new WordModel("Lorem", 13),
         new WordModel("Ipsum", 10),
         new WordModel("Dolor", 9),
         new WordModel("Sit", 8),
