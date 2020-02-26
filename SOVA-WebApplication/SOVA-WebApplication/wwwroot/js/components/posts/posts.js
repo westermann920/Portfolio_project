@@ -22,7 +22,7 @@
         self.termToFind = ko.observable(""); // Search input value
         self.setSize = ko.observable(5); // How many posts is shown at ones
         self.currentSet = ko.observable(0); // The current post set
-        self.currentSearchType = ko.observable("inBody");
+        self.currentSearchType = ko.observable("inBody"); // the current type of search
 
         // Check if search input field is used or not
         self.checkTerm = function () {
