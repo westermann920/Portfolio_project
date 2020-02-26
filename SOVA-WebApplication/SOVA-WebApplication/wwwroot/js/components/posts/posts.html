@@ -19,7 +19,7 @@
         </select>
     </div>
     <div data-bind="foreach: posts">
-        <table class="postTable">
+        <table class="table">
             <tr data-bind="click: showF">
                 <th>ID:</th>
                 <td><span data-bind="text: id"></span></td>
@@ -29,6 +29,8 @@
                 <td><span data-bind='text: tags, visible: tags != null'></span><span data-bind='visible: tags == null'>None</span></td>
                 <th>Creation date:</th>
                 <td><span data-bind="text: creationdate"></span></td>
+            </tr>
+            <tr colspan="4">
                 <th data-bind="visible: showFull">Body:</th>
                 <td data-bind="visible: showFull"><span data-bind="html: body"></span></td>
             </tr>
