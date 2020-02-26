@@ -9,3 +9,13 @@
     </div>
 </div>
 <div id="bootLegWordCloud" style="border: 2px solid black"></div>
+<div data-bind="foreach: words">
+    <table>
+        <tr>
+            <th>Word:</th>
+            <td><span data-bind="text: text"></span></td>
+            <th>Weight:</th>
+            <td><span data-bind="text: weight"></span></td>
+        </tr>
+    </table>
+</div>
