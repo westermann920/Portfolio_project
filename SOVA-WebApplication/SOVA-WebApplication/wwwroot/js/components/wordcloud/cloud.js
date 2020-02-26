@@ -20,7 +20,7 @@
         new WordModel("Adipiscing", 5)
         ]);
 
-        $("#bootLegWordCloud").jQCloud(self.words, { width: 200, height: 200 });
+        $("#bootLegWordCloud").jQCloud(self.words(), { width: 200, height: 200 });
 
         self.checkInput = function() {
             if (self.word() !== "") {
@@ -36,12 +36,12 @@
             var wordCountData = await response.json();
             self.words.push(new WordModel(self.word(), wordCountData[0].count));
             self.word("");// reset word
-            $("#bootLegWordCloud").jQCloud("update", self.words);
+            $("#bootLegWordCloud").jQCloud("update", self.words());
         }
 
         self.resetCloud = async function () {
             self.words([]);//clears word array
-            $("#bootLegWordCloud").jQCloud("update", self.words);
+            $("#bootLegWordCloud").jQCloud("update", self.words());
         };
 
         self.updateCloud = async function () {
@@ -52,7 +52,7 @@
                 var wordCountData = await response.json();
                 self.words.push(new WordModel(wordList[i], wordCountData[0].count));
             }
-            $("#bootLegWordCloud").jQCloud("update", self.words);
+            $("#bootLegWordCloud").jQCloud("update", self.words());
             /*
             var cloudWords = [];
             var response = await fetch("api/word");
