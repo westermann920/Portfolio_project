@@ -5,6 +5,13 @@
         self.id = data.id;
         self.title = data.title;
         self.body = data.body;
+        self.creationdate = data.creationdate;
+        self.tags = data.tags;
+        self.showFull = ko.observable(false);
+
+        self.showF = function () {
+            self.showFull(!self.showFull());
+        }
     };
 
     // View Model

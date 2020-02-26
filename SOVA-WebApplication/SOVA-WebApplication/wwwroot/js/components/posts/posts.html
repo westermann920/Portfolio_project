@@ -15,10 +15,15 @@
     </div>
     <div data-bind="foreach: posts">
         <table class="table">
-            <tr>
-                <th data-bind="text: id"></th>
-                <td data-bind="text: title"></td>
-                <td data-bind="text: body"></td>
+            <tr data-bind="click: showF">
+                <th>ID:</th>
+                <td><span data-bind="text: id"></span></td>
+                <th>Title:</th>
+                <td><span data-bind="text: title"></span></td>
+                <th>Creation date:</th>
+                <td><span data-bind="text: creationdate"></span></td>
+                <th data-bind="visible: showFull">Body:</th>
+                <td data-bind="visible: showFull"><span data-bind="html: body"></span></td>
             </tr>
         </table>
     </div>
