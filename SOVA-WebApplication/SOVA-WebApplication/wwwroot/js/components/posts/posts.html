@@ -33,7 +33,7 @@
         </table>
     </div>
     <div>
-        <nav data-bind="visible: posts().length > 0" class="align-baseline">
+        <nav data-bind="visible: posts().length > 0">
             <a href="#" data-bind="click: previousSet, visible: currentSet() > 0">Previous</a>
             <p>Set: <span data-bind="text: currentSet()+1"></span> of <span data-bind="text: numberOfPostSets()+1"></span></p>
             <a href="#" data-bind="click: nextSet, visible: currentSet() < numberOfPostSets()">Next</a>
