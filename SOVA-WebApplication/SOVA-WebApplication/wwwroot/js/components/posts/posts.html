@@ -19,22 +19,18 @@
         </select>
     </div>
     <div data-bind="foreach: posts">
-        <table class="table">
-            <tr data-bind="click: showF">
-                <th>ID:</th>
-                <td><span data-bind="text: id"></span></td>
-                <th>Title:</th>
-                <td><span data-bind='text: title, visible: title != null'></span><span data-bind='visible: title == null'>None</span></td>
-                <th>Tags:</th>
-                <td><span data-bind='text: tags, visible: tags != null'></span><span data-bind='visible: tags == null'>None</span></td>
-                <th>Creation date:</th>
-                <td><span data-bind="text: creationdate"></span></td>
-            </tr>
-            <tr colspan="4">
-                <th data-bind="visible: showFull">Body:</th>
-                <td data-bind="visible: showFull"><span data-bind="html: body"></span></td>
-            </tr>
-        </table>
+        <div style="border: 4px solid #7A7A7A;" data-bind="click: showF" id="postContent">
+            <b style="display: inline-block; margin-left: 10px;">ID: </b>
+            <p style="display: inline-block;"><span data-bind="text: id"></span></p>
+            <b style="display: inline-block;">Title: </b>
+            <p style="display: inline-block;"><span data-bind='text: title, visible: title != null'></span><span data-bind='visible: title == null'>None</span></p>
+            <b style="display: inline-block;">Tags: </b>
+            <p style="display: inline-block;"><span data-bind='text: tags, visible: tags != null'></span><span data-bind='visible: tags == null'>None</span></p>
+            <b style="display: inline-block;">Creation date: </b>
+            <p style="display: inline-block;"><span data-bind="text: creationdate"></span></p>
+            <b style="display: inline-block;" data-bind="visible: showFull">Body: </b>
+            <p style="display: inline-block;" data-bind="visible: showFull"><span data-bind="html: body"></span></p>
+        </div>
     </div>
     <div>
         <nav data-bind="visible: posts().length > 0">
