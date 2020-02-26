@@ -40,12 +40,12 @@
         }
 
         self.resetCloud = async function () {
-            self.words = [];//clears word array
+            self.words([]);//clears word array
             $("#bootLegWordCloud").jQCloud("update", self.words);
         };
 
         self.updateCloud = async function () {
-            self.words = [];//clears word array
+            self.word([]);//clears word array
             var wordList = ["sql", "php", "c#", "c++", "java", "javaScript"];
             for (var i = 0; i < wordList.length; i++) {
                 var response = await fetch(`api/word/count/${wordList[i]}`);
