@@ -45,7 +45,7 @@
         };
 
         self.updateCloud = async function () {
-            self.word([]);//clears word array
+            self.words([]);//clears word array
             var wordList = ["sql", "php", "c#", "c++", "java", "javaScript"];
             for (var i = 0; i < wordList.length; i++) {
                 var response = await fetch(`api/word/count/${wordList[i]}`);
