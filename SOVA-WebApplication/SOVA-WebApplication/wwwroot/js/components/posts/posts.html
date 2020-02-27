@@ -1,12 +1,13 @@
 ﻿<form class="form-group" data-bind="submit: getPosts">
-    Question:
-    <input class="form-control" data-bind="value: termToFind, valueUpdate: 'afterkeydown'" />
+    <br/>
+    <input class="form-control" data-bind="value: termToFind, valueUpdate: 'afterkeydown'" placeholder="Enter search term..."/>
+    <p>Search in: </p>
     <select data-bind="value: currentSearchType">
-        <option value="inBody">inBody</option>
-        <option value="inTitle">inTitle</option>
-        <option value="inTags">inTags</option>
+        <option value="inBody">Body</option>
+        <option value="inTitle">Title</option>
+        <option value="inTags">Tags</option>
     </select>
-    <button class="btn btn-dark" type="submit" data-bind="enable: checkTerm() != false">Search</button>
+    <button class="btn btn-success" type="submit" data-bind="enable: checkTerm() != false">Search</button>
 </form>
 
 <div>
@@ -34,9 +35,9 @@
     </div>
     <div>
         <nav data-bind="visible: posts().length > 0">
-            <a href="#" data-bind="click: previousSet, visible: currentSet() > 0">Previous</a>
-            <p>Set: <span data-bind="text: currentSet()+1"></span> of <span data-bind="text: numberOfPostSets()+1"></span></p>
-            <a href="#" data-bind="click: nextSet, visible: currentSet() < numberOfPostSets()">Next</a>
+            <a class="btn btn-primary" href="#" data-bind="click: previousSet, visible: currentSet() > 0">Previous</a>
+            <p>Page: <span data-bind="text: currentSet()+1"></span> of <span data-bind="text: numberOfPostSets()+1"></span></p>
+            <a class="btn btn-primary" href="#" data-bind="click: nextSet, visible: currentSet() < numberOfPostSets()">Next</a>
         </nav>
     </div>
 </div>
